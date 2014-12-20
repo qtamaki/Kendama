@@ -1,7 +1,10 @@
-<h1>Hello!!!!!!</h1>
+<h1>対戦相手一覧</h1>
 
+<%= form_tag 'match' do %>
+  <%= hidden_field_tag 'dst_user_id' %>
 <ul>
 <% @users.each do |user| %>
-  <li><%= user.nickname %></li>
+  <li><%= image_tag "icon#{user.image_number}.jpg", :size => "80x80" %> <%= user.nickname %> <%= submit_tag "対戦する" , :dst_user_id => user.id, :onclick => "$('#dst_user_id')[0].value = this.getAttribute('dst_user_id')" %></li>
 <% end %>
 </ul>
+<% end %>

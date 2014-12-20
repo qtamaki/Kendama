@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/luislavena/rb-readline.git
+  revision: ce4908dae45dbcae90a6e42e3710b8c3a1f2cd64
+  specs:
+    rb-readline (0.5.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -72,7 +78,6 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
-    rb-readline (0.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
     sass (3.2.19)
@@ -114,7 +119,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   rails (= 4.1.8)
-  rb-readline (~> 0.4.2)
+  rb-readline!
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring

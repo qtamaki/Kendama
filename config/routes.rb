@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post "setup" => "home#setup!"
   post "logout" => "home#logout!"
   get "logout" => "home#logout!"
-
+  post "match" => "home#match!"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

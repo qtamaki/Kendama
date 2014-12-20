@@ -12,13 +12,19 @@ class HomeController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.where("id != ? and card_list is not null", @user.id)
   end
 
   def enter
   end
 
   def match
+  end
+
+  def match!
+    @dst_user = User.find(params[:dst_user_id])
+
+    render :action => 'match'
   end
 
   def setup

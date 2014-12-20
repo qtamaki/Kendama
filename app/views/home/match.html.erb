@@ -1,3 +1,21 @@
 <h1>対戦結果</h1>
 
+<div style="text-align:center:width:100%;margin: 0px auto">
+<table style="text-align:center:width:100%;margin: 0px auto">
+  <tr>
+    <td rowspan="<%=@results.size+1%>" style="vertical-align: top;padding-right:50px"><%= icon(@user.image_number,"200x200") %></td>
+    <td colspan=4 style="padding-bottom:10px"><%=raw judge2str(@judge) %></td>
+    <td rowspan="<%=@results.size+1%>" style="vertical-align: top;padding-left:50px"><%= icon(@dst_user.image_number,"200x200") %></td>
+  </tr>
+<% @results.each do |res| %>
+  <tr>
+    <td><%=raw te2str(res[0]) %></td>
+    <td><%= res2str(res[2]) %></td>
+    <td><%= res2str(res[3]) %></td>
+    <td><%=raw te2str(res[1])%></td>
+  </tr>
+<% end %>
+</table>
+
+</div>
 

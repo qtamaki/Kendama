@@ -2,9 +2,15 @@
 
 <%= form_tag 'match' do %>
   <%= hidden_field_tag 'dst_user_id' %>
-<ul>
-<% @users.each do |user| %>
-  <li><%= image_tag "icon#{user.image_number}.jpg", :size => "80x80" %> <%= user.nickname %> <%= submit_tag "対戦する" , :dst_user_id => user.id, :onclick => "$('#dst_user_id')[0].value = this.getAttribute('dst_user_id')" %></li>
-<% end %>
-</ul>
+  <% @users.each do |user| %>
+    <div class="media col-md-3">
+      <a class="pull-left" href="#">
+        <%= image_tag "icon#{user.image_number}.jpg", :size => "80x80" %>
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading"><%= user.nickname %></h4>
+        <%= submit_tag "対戦する" , :dst_user_id => user.id, :onclick => "$('#dst_user_id')[0].value = this.getAttribute('dst_user_id')" %>
+      </div>
+    </div>
+  <% end %>
 <% end %>

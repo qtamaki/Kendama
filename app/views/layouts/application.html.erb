@@ -8,16 +8,21 @@
 </head>
 <body>
 
+<% if @user %>
+  <div style="text-align:right">
+    <%= link_to 'ログアウト', :action => 'logout!' %>
+    <%= image_tag "icon#{@user.image_number}.jpg", :size => '80x80' %>
+    <%= link_to @user.nickname, :action => 'setup' %>
+  <hr/>
+</div>
+<% end %>
+
 <% if params[:msg] %>
   <p><%= params[:msg] %></p>
 <% end %>
+<div class="container">
 <%= yield %>
-
-<% if @user %>
-  <hr/>
-  <%= image_tag "icon#{@user.image_number}.jpg", :size => '80x80' %>
-  <%= @user.nickname %>
-<% end %>
+</div>
 
 </body>
 </html>

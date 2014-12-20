@@ -10,7 +10,7 @@
 
 <%= form_tag 'setup' do %>
   <%= hidden_field_tag 'hidden_card_list' %>
-  <%= submit_tag '設定完了', :id => 'card_list_submit', :onclick => "return setup_submit()", :disabled => true %>
+  <%= submit_tag '設定完了', :id => 'card_list_submit', :onclick => "return setup_submit()", :disabled => @user.card_list.to_s.split(',').size < 10 %>
   <%= button_tag(type: 'button', onclick: "return setup_clear();") do %>
     クリア
   <% end %>

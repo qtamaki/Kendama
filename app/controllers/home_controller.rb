@@ -23,6 +23,9 @@ class HomeController < ApplicationController
 
   def match!
     @dst_user = User.find(params[:dst_user_id])
+    @results = Scoreline.match(@user, @dst_user)
+    p @results
+    @judge = Scoreline.judge(@results)
 
     render :action => 'match'
   end

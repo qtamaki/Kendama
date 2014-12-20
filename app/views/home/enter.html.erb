@@ -1,17 +1,30 @@
 <h1>拳コレ登録画面</h1>
 
 <%= form_tag 'enter' do %>
-  お名前:
-  <%= text_field_tag 'user_name' %><br/>
-  Eメール:
-  <%= text_field_tag 'email' %><br/>
-  <%= radio_button_tag 'icon', '1', true %>
-  <%= image_tag 'icon1.jpg', :size => '80x80' %><br/>
-  <%= radio_button_tag 'icon', '2' %>
-  <%= image_tag 'icon2.jpg', :size => '80x80' %><br/>
-  <%= radio_button_tag 'icon', '3' %>
-  <%= image_tag 'icon3.jpg', :size => '80x80' %><br/>
+  <div class="form-group">
+    <label for="user_name">お名前:</label>
+    <%= text_field_tag 'user_name', '', :class => 'form-control' %><br/>
+</div>
+  <div class="form-group">
+    <label for="user_name">Eメール:</label>
+    <%= text_field_tag 'email', '', :class => 'form-control' %><br/>
+  </div>
 
-  <%= submit_tag '登録' %>
+  <div class="form-group">
+  <div class="row">
+    <% first = true %>
+    <% 1.upto(11).each do |x| %>
+      <div class="col-md-1">
+        <%= radio_button_tag 'icon', x, first %>
+        <%= image_tag "icon#{x}.jpg", :size => '80x80' %>
+      </div>
+      <% first = false %>
+    <% end %>
+  </div>
+  </div>
+  
+  <div class="form-group">
+  <%= submit_tag '登録', :class => "btn btn-md btn-info" %>
+</div>
 <% end %>
 

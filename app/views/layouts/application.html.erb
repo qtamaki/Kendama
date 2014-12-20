@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Kendama</title>
+  <title>拳コレ！(じゃん拳コレクション)</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<% if params[:msg] %>
+  <p><%= params[:msg] %></p>
+<% end %>
 <%= yield %>
+
+<% if session[:user] %>
+  <hr/>
+  <%= image_tag "icon#{session[:user].image_number}.jpg", :size => '80x80' %>
+  <%= session[:user].nickname %>
+<% end %>
 
 </body>
 </html>

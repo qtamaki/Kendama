@@ -1,0 +1,17 @@
+<h1>拳コレ登録画面</h1>
+
+<%= form_tag 'setup' do %>
+  お名前:
+  <%= text_field_tag 'user_name' %><br/>
+  Eメール:
+  <%= text_field_tag 'email' %><br/>
+  <%= radio_button_tag 'icon', '1', true %>
+  <%= image_tag 'icon1.jpg', :size => '80x80' %><br/>
+  <%= radio_button_tag 'icon', '2' %>
+  <%= image_tag 'icon2.jpg', :size => '80x80' %><br/>
+  <%= radio_button_tag 'icon', '3' %>
+  <%= image_tag 'icon3.jpg', :size => '80x80' %><br/>
+
+  <%= submit_tag '登録' %>
+<% end %>
+

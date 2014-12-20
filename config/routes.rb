@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  root "home#index"
+
+  get "enter" => 'home#enter'
+  get "match" => "home#match"
+  get "setup" => "home#setup"
+  post "setup" => "home#setup!"
+  post "logout" => "home#logout!"
+  get "logout" => "home#logout!"
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

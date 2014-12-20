@@ -1,6 +1,56 @@
 <h1>手の内を10個入力してください！</h1>
 
-<%= image_tag 'gu.jpg', :size => '200x200' %>
-<%= image_tag 'choki.jpg', :size => '200x200' %>
-<%= image_tag 'pa.jpg', :size => '200x200' %>
+<%= te(0) %> <%= te(1) %> <%= te(2) %>
+
+<div id="card_list">
+  <% @user.card_list.to_s.split(',').each do |num| %>
+    <%= te(num, true) %>
+  <% end %>
+</div>
+
+<%= form_tag 'setup' do %>
+  <%= hidden_field_tag 'hidden_card_list' %>
+  <%= submit_tag '設定完了', :id => 'card_list_submit', :onclick => "return setup_submit()", :disabled => true %>
+  <%= button_tag(type: 'button', onclick: "return setup_clear();") do %>
+    クリア
+  <% end %>
+<% end %>
+
+<script type="text/javascript">
+<!--
+function set_card_list(obj) {
+  if(check_over_10()) {
+    $('#card_list_submit')[0].disabled = false;
+    return false;
+  }
+
+  var c = obj.clone(false);
+  c[0].setAttribute('width','80');
+  c[0].setAttribute('height','80');
+  $('#card_list').append(c[0]);
+  return true;
+}
+
+function check_over_10() {
+  var count = $('#card_list img').size();
+  console.log(count);
+  return count > 9;
+}
+
+function setup_submit() {
+  var images = $('#card_list img');
+  var arr = jQuery.map(images, function (n, i) {
+    return n.getAttribute('te');
+  });
+  $('#hidden_card_list')[0].value = arr.join(",");
+  return true;
+}
+
+function setup_clear() {
+  $('#card_list').html('');
+  $('#card_list_submit')[0].disabled = true;
+  return true;
+}
+-->
+</script>
 

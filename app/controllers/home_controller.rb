@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 class HomeController < ApplicationController
-  before_action :login_check, :except => [:enter, :setup!]
+  before_action :login_check, :except => [:enter, :enter!]
 
 
   def login_check
     if session[:user]
-      @user = session[:user]
+      @user = User.find(session[:user])
     else
       redirect_to :action => :enter, :msg => 'ログインが必要です'
     end
@@ -25,6 +25,13 @@ class HomeController < ApplicationController
   end
 
   def setup!
+    raise "Error" unless params[:hidden_card_list]
+    @user.card_list = params[:hidden_card_list]
+    @user.save!
+    redirect_to :action => 'index'
+  end
+
+  def enter!
     @user = User.where(:nickname => params[:user_name]).first
     unless @user
       @user = User.new({:nickname => params[:user_name],
@@ -35,7 +42,7 @@ class HomeController < ApplicationController
                         :encrypted_password => 'dummy'})
       @user.save!
     end
-    session[:user] = @user
+    session[:user] = @user.id
     render :action => 'setup'
   rescue ActiveRecord::RecordInvalid
     redirect_to :action => :enter, :msg => '入力内容が間違ってるようです。。。'

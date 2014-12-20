@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   get "enter" => 'home#enter'
+  post "enter" => 'home#enter!'
   get "match" => "home#match"
   get "setup" => "home#setup"
   post "setup" => "home#setup!"

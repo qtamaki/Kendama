@@ -13,10 +13,10 @@
 <% end %>
 <%= yield %>
 
-<% if session[:user] %>
+<% if @user %>
   <hr/>
-  <%= image_tag "icon#{session[:user].image_number}.jpg", :size => '80x80' %>
-  <%= session[:user].nickname %>
+  <%= image_tag "icon#{@user.image_number}.jpg", :size => '80x80' %>
+  <%= @user.nickname %>
 <% end %>
 
 </body>
